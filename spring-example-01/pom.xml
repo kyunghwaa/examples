@@ -4,7 +4,8 @@
   		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
   		  					 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
+  
+  <groupId>bank</groupId>
   <artifactId>bank</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
@@ -14,6 +15,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.version>4.0.6.RELEASE</spring.version>
   </properties>
 
   <dependencies>
@@ -27,13 +29,13 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
-      <version>4.0.0.RELEASE</version>
+      <version>${spring.version}</version>
     </dependency>
     
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-aspects</artifactId>
-      <version>4.0.0.RELEASE</version>
+      <version>${spring.version}</version>
     </dependency>  
     
     <dependency>
@@ -42,5 +44,5 @@
     	<version>1.8.1</version>
     </dependency>
   </dependencies>
-  <groupId>bank</groupId>
+
 </project>

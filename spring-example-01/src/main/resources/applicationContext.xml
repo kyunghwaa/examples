@@ -7,9 +7,12 @@
 		http://www.springframework.org/schema/aop
 		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
 
+	<aop:aspectj-autoproxy />
+
 	<bean id="profilingAdvice" class="bank.ProfilingAdvice"/>
 	
-	<!-- Aspect 설정: Advice를 어떤 PointCut에 적용할지 설정 -->
+	<!-- 
+	Aspect 설정: Advice를 어떤 PointCut에 적용할지 설정
 	<aop:config>
 		<aop:aspect id="traceAspect" ref="profilingAdvice">
 			<aop:pointcut id="publicMethod"
@@ -17,6 +20,7 @@
 			<aop:around pointcut-ref="publicMethod" method="trace"/>
 		</aop:aspect>
 	</aop:config>
+	-->
 	
 	<bean id="BankUI" class="bank.BankUI">
 		<property name="bank" ref="ShinhanBank" />
