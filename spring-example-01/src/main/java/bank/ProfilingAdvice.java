@@ -6,7 +6,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 @Aspect
 public class ProfilingAdvice {
 	
-	@Around("execution(public * bank..*(..))")
+	@Around("execution(* bank..*(..))")
 	public Object trace(ProceedingJoinPoint joinPoint) throws Throwable {
 		String signatureString = joinPoint.getSignature().getName();
 		System.out.println(signatureString + " Start");

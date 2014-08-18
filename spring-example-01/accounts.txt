@@ -2,3 +2,4 @@
 222|jang|50|minus
 333|kang|300|normal
 444|lee|-100|minus
+555|lee|0|minus
