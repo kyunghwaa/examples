@@ -1,5 +1,5 @@
-111|hong|200|normal
+111|hong|100|normal
 222|jang|50|minus
 333|kang|300|normal
 444|lee|-100|minus
-555|lee|0|minus
+555|lee|100|minus
