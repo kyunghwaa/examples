@@ -2,24 +2,60 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/aop
-		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 		
+	<!-- 트랜잭션 매니저 설정 시작 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!--
+	<aop:config>
+		<aop:pointcut id="serviceMethods"
+			expression="execution(* *..ShinhanBankService.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods" />
+	</aop:config>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="transfer*" propagation="REQUIRED" />
+			<tx:method name="*" propagation="SUPPORTS" />
+		</tx:attributes>
+	</tx:advice>
+	-->
+	<!-- 트랜잭션 매니저 설정 끝 -->
+			
 	<aop:aspectj-autoproxy>
 		<aop:include name="bankLogger"/>
 	</aop:aspectj-autoproxy>		
 
 	<bean id="bankLogger" class="bank.BankLogger"/>
-
-	<bean id="BankUI" class="bank.BankUI">
-		<property name="bank" ref="ShinhanBank" />
-		<property name="accountFile">
-			<value>accounts.txt</value>
-		</property>
+	
+	<bean id="bankUI" class="bank.BankUI">
+		<property name="bankService" ref="bankService" />
 	</bean>
 	
-	<bean id="ShinhanBank" class="bank.ShinhanBank" />
+	<bean id="bankService" class="bank.ShinhanBankService">
+		<property name="bankDao" ref="bankDao" />
+	</bean>
+	
+	<bean id="bankDao" class="bank.ShinhanBankDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
+		<property name="username" value="scott" />
+		<property name="password" value="tiger" />
+	</bean>	
 	
 </beans>

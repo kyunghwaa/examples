@@ -1,15 +1,15 @@
 package bank;
 
-public abstract class Account {
+public class Account {
 	private String name;
 	private String accountNo;
 	protected long balance;
 	private String kind;
 	
-	public static final String ACCOUNT_NORMAL = "normal";
-	public static final String ACCOUNT_MINUS = "minus";
-	public static final String DEPOSIT = "deposit";
-	public static final String WITHDRAW = "withdraw";
+	public static final String ACCOUNT_NORMAL = "일반";
+	public static final String ACCOUNT_MINUS = "마이너스";
+	public static final String DEPOSIT = "입금";
+	public static final String WITHDRAW = "출금";
 	
 	public Account () {}
 	
@@ -25,12 +25,6 @@ public abstract class Account {
 		this.balance = balance;
 		this.kind = kind;		
 	}
-	
-	public void deposit (long money) {
-		balance += money;
-	}
-	
-	public abstract void withdraw (long money) throws LackOfBalanceException;
 	
 	public String getName () {
 		return name;
@@ -55,6 +49,14 @@ public abstract class Account {
 	public void setBalance (long balance) {
 		this.balance = balance;
 	}	
+	
+	public String getKind () {
+		return kind;
+	}
+	
+	public void setKind (String kind) {
+		this.kind = kind;
+	}
 	
 	@Override
 	public String toString() {

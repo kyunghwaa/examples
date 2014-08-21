@@ -1,6 +1,6 @@
 package bank;
 
-import bank.LackOfBalanceException;
+// import bank.LackOfBalanceException;
 
 public class AccountNormal extends Account {
 	
@@ -14,6 +14,7 @@ public class AccountNormal extends Account {
 		super (name, accountNo, balance, kind);		
 	}
 	
+	/*
 	@Override
 	public void withdraw (long money) throws LackOfBalanceException {
 		if (money > balance) {
@@ -21,4 +22,5 @@ public class AccountNormal extends Account {
 		}
 		balance -= money;
 	}
+	*/
 }

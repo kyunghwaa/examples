@@ -1,13 +1,10 @@
 package bank;
 
-public class LackOfBalanceException extends Exception {
+import org.springframework.dao.DataAccessException;
 
-	private static final long serialVersionUID = 6384843121829820665L;
+@SuppressWarnings("serial")
+public class LackOfBalanceException extends DataAccessException {
 
-	public LackOfBalanceException () {
-		super ();
-	}
-	
 	public LackOfBalanceException (String message, Throwable cause) {
 		super (message, cause);
 	}
@@ -15,8 +12,5 @@ public class LackOfBalanceException extends Exception {
 	public LackOfBalanceException (String message) {
 		super (message);
 	}
-	
-	public LackOfBalanceException (Throwable cause) {
-		super (cause);
-	}
+
 }
