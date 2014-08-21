@@ -2,4 +2,4 @@
 /.settings/
 /bin/
 /log/
-/src/main/java/bank/*.bak
+/src/main/java/*/*.bak
